@@ -1,0 +1,13 @@
+name: Simple Workflow Demo
+on:
+  push:
+    branches:
+      - main
+jobs:
+  display-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Display custom message
+        run: echo "Hello, this is my first GitHub Actions workflow!"
