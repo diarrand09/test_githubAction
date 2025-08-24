@@ -1,11 +1,30 @@
 name: Démo GitHub Actions
+
 on:
   push:
     branches: ["main"]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Afficher un message
-        run: echo Bonjour le monde !
+      # Étape 1 : Récupérer ton dépôt
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      # Étape 2 : Installer Python
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # Étape 3 : Vérifier la version de Python
+      - name: Vérifier version Python
+        run: python --version
+
+      # Étape 4 : Créer et exécuter un script Python
+      - name: Lancer un script Python
+        run: |
+          echo "print('Hello depuis GitHub Actions 🚀')" > demo.py
+          python demo.py
